@@ -1,0 +1,52 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    logging:
+      driver: none
+    environment:
+      - POSTGRES_DB=rhsalles
+      - POSTGRES_USER=rhsalles
+      - POSTGRES_PASSWORD=rhsalles123
+    ports:
+      - '5433:5432'
+    volumes:
+      - ./docker/volume_postgres:/var/lib/postgresql/data
+    networks:
+      - db-network
+      
+  AppBack:
+    build:
+      context: ./fontes/AppBack/AppBack
+      dockerfile: ../../../Dockerfile
+    image: appbackrhsalles/api      
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
+      - PROFILE=dev
+    depends_on:
+      - db
+    networks:
+      - db-network
+    restart: on-failure
+    
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "admin@email.com"
+  #     PGADMIN_DEFAULT_PASSWORD: "admin@email.com"
+  #   logging:
+  #     driver: none
+  #   ports:
+  #     - "15432:80"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - db-network
+networks: 
+  db-network:
+    driver: bridge

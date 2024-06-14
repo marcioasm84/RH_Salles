@@ -1,0 +1,20 @@
+app:
+  auth:
+    jwtSecret: 't7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)H@McQfTjWn'
+    jwtExpirationMs: 14400000
+spring:
+  application:
+    name: AppBack
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url:  jdbc:postgresql://db:5433/rhsalles
+    username: rhsalles
+    password: 'rhsalles123'
+  jpa:
+    hibernate:
+      ddl-auto: none
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
