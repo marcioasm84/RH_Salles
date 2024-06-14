@@ -7,7 +7,7 @@ spring:
     name: AppBack
   datasource:
     driverClassName: org.postgresql.Driver
-    url:  jdbc:postgresql://db:5433/rhsalles
+    url:  jdbc:postgresql://db:5432/rhsalles
     username: rhsalles
     password: 'rhsalles123'
   jpa:
