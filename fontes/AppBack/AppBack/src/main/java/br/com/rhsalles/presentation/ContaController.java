@@ -136,13 +136,16 @@ public class ContaController {
     	if(arquivoCsv.isEmpty()) {
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Arquivo não informado!");
     	}
+    	contaService.importaContas(arquivoCsv);
+    	return ResponseEntity.status(HttpStatus.OK).body("Arquivo enviado para processamento!");
+    	/*
     	try { 
     		CsvMapper csvMapper = new CsvMapper();
     		CsvSchema schema = CsvSchema.emptySchema().withHeader();
     		MappingIterator<ContaImportadaDto> contaMappingIterator = csvMapper.readerFor(ContaImportadaDto.class).
     																	with(schema).
     																	readValues(arquivoCsv.getInputStream());
-            List<ContaImportadaDto> contasImportadas = contaMappingIterator.readAll();
+            List<ContaImportadaDto> contasImportadas = contaMappingIterator.readAll();cont
             List<Conta> contas = contasImportadas.stream().map(c -> c.toConta()).collect(Collectors.toList());
             contaService.saveAll(contas);
     		
@@ -150,7 +153,7 @@ public class ContaController {
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao processar o arquivo. Verifique o formado do arquivo: " + e.getMessage());
-        }
+        }*/
     	
     }
 }

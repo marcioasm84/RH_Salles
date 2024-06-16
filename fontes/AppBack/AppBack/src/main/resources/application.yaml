@@ -1,13 +1,21 @@
 app:
+  uploadDir: 'C:/Projetos/Projeto_RH_Salles/upload'
   auth:
     jwtSecret: 't7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)H@McQfTjWn'
     jwtExpirationMs: 14400000
+  broker:
+    exchange: 
+      importaContaEvent: app.importacontaevent
+    queue:
+      importaContaEventQueue:
+        name: app.importacontaevent
 spring:
   application:
     name: AppBack
   datasource:
     driverClassName: org.postgresql.Driver
-    url:  jdbc:postgresql://db:5432/rhsalles
+    #url:  jdbc:postgresql://db:5432/rhsalles
+    url:  jdbc:postgresql://localhost:5433/rhsalles
     username: rhsalles
     password: 'rhsalles123'
   jpa:
@@ -18,3 +26,5 @@ spring:
     properties:
       hibernate:
         show_sql: true
+        
+  
