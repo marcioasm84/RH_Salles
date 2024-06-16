@@ -145,8 +145,6 @@ public class ContaController {
             List<ContaImportadaDto> contasImportadas = contaMappingIterator.readAll();
             List<Conta> contas = contasImportadas.stream().map(c -> c.toConta()).collect(Collectors.toList());
             contaService.saveAll(contas);
-            
-            System.out.println("contas: " + contasImportadas.size());
     		
             return ResponseEntity.status(HttpStatus.OK).body("Arquivo recebido e processado com sucesso!");
         } catch (IOException e) {

@@ -38,8 +38,6 @@ public class ContaServiceImpl implements ContaService {
 		} else {
 			contas = contaRepository.findByDescricaoAndDataVencimentoAndDataPagamento(pageable, descricao, dataVencimento, null);
 		}
-		
-		
 		return contas;
 	}
 

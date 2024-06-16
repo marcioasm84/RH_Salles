@@ -39,17 +39,75 @@
 	      <groupId>org.flywaydb</groupId>
 	      <artifactId>flyway-core</artifactId>
 	    </dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+	    
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Spring Boot Starter Test para suporte a testes em aplicações Spring Boot -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-test</artifactId>
+	        <scope>test</scope>
+	        <!-- Exclusão do JUnit 4 que é trazido transitivamente pelo spring-boot-starter-test -->
+	        <exclusions>
+	            <exclusion>
+	                <groupId>junit</groupId>
+	                <artifactId>junit</artifactId>
+	            </exclusion>
+	        </exclusions>
+	    </dependency>
+	
+	    <!-- JUnit 5 para testes unitários -->
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-api</artifactId>
+	        <version>5.8.1</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-engine</artifactId>
+	        <version>5.8.1</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	    </dependency>
+	
+	    <!-- Mockito para mocks em testes -->
+	    <dependency>
+	        <groupId>org.mockito</groupId>
+	        <artifactId>mockito-core</artifactId>
+	        <version>4.2.0</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	    </dependency>
+	
+	    <!-- PowerMockito para mocks avançados (necessita de integração com JUnit 5) -->
+	    <dependency>
+	        <groupId>org.powermock</groupId>
+	        <artifactId>powermock-core</artifactId>
+	        <version>2.0.9</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.powermock</groupId>
+	        <artifactId>powermock-module-junit4</artifactId>
+	        <version>2.0.9</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	        <exclusions>
+	            <exclusion>
+	                <groupId>junit</groupId>
+	                <artifactId>junit</artifactId>
+	            </exclusion>
+	        </exclusions>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.powermock</groupId>
+	        <artifactId>powermock-api-mockito2</artifactId>
+	        <version>2.0.9</version> <!-- Versão pode variar, verifique a mais recente -->
+	        <scope>test</scope>
+	    </dependency>
+		
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
